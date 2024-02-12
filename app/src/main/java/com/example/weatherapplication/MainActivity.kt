@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.weatherapplication.dataModel.Current
 import com.example.weatherapplication.dataModel.RetrofaceBuilder
 
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherIcon : ImageView
     private lateinit var waetherCondition : TextView
     private lateinit var btnSearch : ImageView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,10 +46,11 @@ class MainActivity : AppCompatActivity() {
             val currentTempInC = it.current.temp_c
             val imageLink = "https:${it.current.condition.icon}"
             val currentCity = it.location.name
-            val currentState = it.location.region
+            val currentState = it.location.country
 
-            weatherRegion.text = "$currentCity , $currentState"
-            waetherCondition.text = "$currentWeatherType , $currentTempInC"
+            weatherRegion.text = " $currentCity , $currentState"
+            waetherCondition.text = "$currentWeatherType , $currentTempInC°C"
+
 
             Glide.with(this)
                 .load(imageLink)

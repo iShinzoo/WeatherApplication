@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/white">
+    android:background="@drawable/snow_background">
 
     <TextView
         android:id="@+id/txtName"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/background_rounded"
-        android:backgroundTint="#F1EAFF"
+        android:backgroundTint="@color/white"
         android:textColorHint="#61677A"
         android:textColor="@color/black"
 
@@ -72,6 +72,7 @@
         android:id="@+id/weatherRegion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/loctaion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchbar"
@@ -100,6 +101,8 @@
         android:textSize="24sp"
         android:textColor="@color/black"
         android:textStyle="normal"/>
+
+
 
 
 
