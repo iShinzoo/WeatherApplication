@@ -2,7 +2,6 @@ package com.example.weatherapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -10,17 +9,16 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.weatherapplication.dataModel.Current
-import com.example.weatherapplication.dataModel.RetrofaceBuilder
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var repo: Repo
-    private lateinit var weatherViewModel: WeatherViewModel
-    private lateinit var weatherViewModelFactory: WeatherViewModelFactory
-    private lateinit var loader : ProgressBar
+    @Inject
+    lateinit var weatherViewModelFactory: WeatherViewModelFactory
 
+    private lateinit var weatherViewModel: WeatherViewModel
+    private lateinit var loader : ProgressBar
     private lateinit var edtCityName : EditText
     private lateinit var weatherRegion : TextView
     private lateinit var weatherIcon : ImageView
@@ -33,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        (application as ApplicationClass).applicationComponent.inject(this)
         init()
 
 
@@ -67,8 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun init(){
-        repo = Repo(RetrofaceBuilder.getInstance())
-        weatherViewModelFactory = WeatherViewModelFactory(repo)
+
         weatherViewModel = ViewModelProvider(this,weatherViewModelFactory).get(WeatherViewModel::class.java)
         loader = findViewById(R.id.loader)
         edtCityName = findViewById(R.id.searchbar)

@@ -1,10 +1,11 @@
 package com.example.weatherapplication
 
-import com.example.weatherapplication.dataModel.RetrofaceInterface
+import com.example.weatherapplication.dataModel.RetrofitInterface
+import javax.inject.Inject
 
-class Repo (
-    private val retrofaceInterface: RetrofaceInterface
+class Repo @Inject constructor(
+    private val retrofitInterface: RetrofitInterface
 ){
 
-    suspend fun getWeatherDetail(city : String) = retrofaceInterface.getWeatherdetail(city)
+    suspend fun getWeatherDetail(city : String) = retrofitInterface.getWeatherdetail(city)
 }
